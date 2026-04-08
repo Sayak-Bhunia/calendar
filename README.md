@@ -89,6 +89,83 @@ pnpm lint
 
 ---
 
+## Running Locally
+
+### 1. Prerequisites
+
+Make sure the following are installed on your machine:
+
+- **Node.js 18+** — [Download](https://nodejs.org/en/download) or use a version manager like [nvm](https://github.com/nvm-sh/nvm):
+  ```bash
+  nvm install 18
+  nvm use 18
+  ```
+- **pnpm** — if not already installed:
+  ```bash
+  npm install -g pnpm
+  ```
+
+Verify your versions:
+```bash
+node -v   # should be v18.x or higher
+pnpm -v   # should be v8.x or higher
+```
+
+### 2. Clone or extract the project
+
+If cloning from a Git repository:
+```bash
+git clone <your-repo-url>
+cd <repo-folder>
+```
+
+Or if you have the project as a zip, extract it and navigate into the folder:
+```bash
+unzip project.zip
+cd project
+```
+
+### 3. Install dependencies
+
+```bash
+pnpm install
+```
+
+This installs all packages defined in `package.json` using the exact versions locked in `pnpm-lock.yaml`.
+
+### 4. Start the development server
+
+```bash
+pnpm dev
+```
+
+The app will start at [http://localhost:3000](http://localhost:3000). The dev server supports hot reloading — changes to any file are reflected in the browser instantly without a full restart.
+
+### 5. Build for production (optional)
+
+To test a production build locally:
+
+```bash
+pnpm build   # compiles and optimises the app
+pnpm start   # serves the production build at http://localhost:3000
+```
+
+### Troubleshooting
+
+**`pnpm: command not found`** — install pnpm globally first: `npm install -g pnpm`
+
+**Port 3000 already in use** — run on a different port: `pnpm dev -- -p 3001`
+
+**Module not found errors** — delete `node_modules` and reinstall:
+```bash
+rm -rf node_modules
+pnpm install
+```
+
+**Type errors on start** — ensure you're on TypeScript 5.7+ (already pinned in `package.json`) and that `pnpm install` completed without errors.
+
+---
+
 ## How It Works
 
 ### State management
